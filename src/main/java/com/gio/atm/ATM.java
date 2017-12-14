@@ -14,4 +14,8 @@ public class ATM {
     public boolean withdraw(int requestedAmount) {
         return true;
     }
+
+    public int getBalanceAvailable() {
+        return 3000;
+    }
 }
