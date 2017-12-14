@@ -21,7 +21,8 @@ public class ATMBuilder {
     public ATM build() {
         ATM atm = new ATM();
         atm.setMoneySlots(slots);
-        atm.setWithdrawalStrategy(strategy);
+        if(strategy != null)
+            atm.setWithdrawalStrategy(strategy);
         return atm;
     }
 

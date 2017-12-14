@@ -4,15 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-//todo get 100 usd
-//test get amount
-//init block
-//moneySlot
-//todo withdrawal
-//atm builder
-//withdrawal strategy
-//todo get not sufficient funds message
-//todo get 110 usd
 
 public class ATMWithdrawalTest {
 
@@ -24,11 +15,30 @@ public class ATMWithdrawalTest {
     }
 
     @Test
-    public void getOneHundredTest(){
+    public void withdrawalTest() throws NotEnoughMoneyException {
         int initAmount = atm.getBalanceAvailable();
-        Assert.assertTrue(atm.withdraw(100));
+        Assert.assertTrue(atm.withdraw(100).size()>0);
         Assert.assertEquals(initAmount-100, atm.getBalanceAvailable());
+
+        initAmount = atm.getBalanceAvailable();
+        Assert.assertTrue(atm.withdraw(210).size()>0);
+        Assert.assertEquals(initAmount-210, atm.getBalanceAvailable());
+
+        initAmount = atm.getBalanceAvailable();
+        Assert.assertTrue(atm.withdraw(130).size()>0);
+        Assert.assertEquals(initAmount-130, atm.getBalanceAvailable());
     }
+
+    @Test(expected = NotEnoughMoneyException.class)
+    public void notEnoughMoneyTest() throws NotEnoughMoneyException {
+        Assert.assertTrue(atm.withdraw(5210).size()>0);
+    }
+
+    @Test(expected = NotEnoughMoneyException.class)
+    public void notMoneyTest() throws NotEnoughMoneyException {
+        Assert.assertTrue(atm.withdraw(21).size()>0);
+    }
+
 
     @Before
     public void init(){

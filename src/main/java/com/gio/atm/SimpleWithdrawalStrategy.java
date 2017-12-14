@@ -8,6 +8,12 @@ public class SimpleWithdrawalStrategy implements WithdrawalStrategy{
     private Map<Integer, Integer> slots;
     private List<Integer> banknotesAscending;
 
+    public SimpleWithdrawalStrategy(){}
+
+    public SimpleWithdrawalStrategy(Map<Integer, Integer> slots) {
+        setSlots(slots);
+    }
+
     @Override
     public Map<Integer, Integer> withdraw(int requestedAmount) {
         Map<Integer,Integer> withdrawalDetails = checkWithdrawalWithBanknotes(requestedAmount);
