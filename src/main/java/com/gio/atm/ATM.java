@@ -42,4 +42,8 @@ public class ATM {
                 moneySlots.put(key, currentAmount - withdrawalAmount);
         }
     }
+
+    public Map<Integer, Integer> getMoneySlots() {
+        return moneySlots;
+    }
 }

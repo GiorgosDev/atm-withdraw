@@ -29,6 +29,7 @@ public class ConsoleUserInterface {
         System.out.println("The set up was completed successfully.");
         ATM atm = builder.build();
         System.out.println("Available amount:" + atm.getBalanceAvailable());
+        printNotes(atm.getMoneySlots());
         System.out.println("Please enter 1 - to withdraw, any other - to exit");
         command = scanner.nextInt();
         while (command == 1){
@@ -40,15 +41,20 @@ public class ConsoleUserInterface {
             try {
                 Map<Integer,Integer> details = atm.withdraw(requestedAmount);
                 System.out.println("Withdrawal completed successfully, please see the details below");
-                System.out.println("value\t\t\tamount");
-                details.entrySet().forEach(e -> System.out.println(e.getKey() + "\t\t\t" + e.getValue()));
+                printNotes(details);
                 System.out.println("Total:\t\t\t"+requestedAmount);
             } catch (NotEnoughMoneyException e) {
                 System.out.println("The requested amount of money can't be provided by ATM");
             }
             System.out.println("Available amount:" + atm.getBalanceAvailable());
+            printNotes(atm.getMoneySlots());
             System.out.println("Please enter 1 - to withdraw, any other - to exit");
             command = scanner.nextInt();
         }
+    }
+
+    private static void printNotes(Map<Integer,Integer> notes){
+        System.out.println("value\t\t\t\t\tamount");
+        notes.entrySet().forEach(e -> System.out.println(e.getKey() + "\t\t\t\t\t" + e.getValue()));
     }
 }
