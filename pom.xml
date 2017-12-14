@@ -18,19 +18,19 @@
                 </configuration>
             </plugin>
             <!-- Make this jar executable -->
-          <!--  <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
 
                     <archive>
                         <manifest>
-                            &lt;!&ndash; Jar file entry point &ndash;&gt;
-                            <mainClass>com.gio.sudoku.SudokuValidationApplication</mainClass>
+                            <!-- Jar file entry point -->
+                            <mainClass>com.gio.atm.ConsoleUserInterface</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
-            </plugin>-->
+            </plugin>
 
         </plugins>
     </build>
